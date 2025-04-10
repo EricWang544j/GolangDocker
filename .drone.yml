@@ -13,4 +13,4 @@ steps:
     GOOS: linux 
     GOARCH: amd64 
   commands:
-    - go run main.go 
+    - go run main.go -http=:8087
