@@ -2,9 +2,10 @@
 kind: pipeline
 name: default
 
-steps:
-- name: build
-  image: golang:alpine
+service:
+  golang:
+    image: golang:alpine
+  port: 8087
   environment:
     GO111MODULE: on 
     GOPROXY: https://goproxy.cn,direct
@@ -12,4 +13,4 @@ steps:
     GOOS: linux 
     GOARCH: amd64 
   commands:
-    - go build main.go 
+    - go run main.go 
