@@ -4,9 +4,13 @@ name: default
 
 steps:
 - name: backend
-  image: golang:1.13-alpine
+  image: golang:alpine
+  port: 8087
   environment:
-    USERNAME:
-      from_secret: username
+    GO111MODULE: on 
+    GOPROXY: https://goproxy.cn,direct
+    CGO_ENABLED: 0  
+    GOOS: linux 
+    GOARCH: amd64 
   commands:
-  - go run main.go
+  - go run main.go 
