@@ -5,12 +5,13 @@ name: default
 service:
   golang:
     image: golang:alpine
-  port: 8087
-  environment:
-    GO111MODULE: on 
-    GOPROXY: https://goproxy.cn,direct
-    CGO_ENABLED: 0  
-    GOOS: linux 
-    GOARCH: amd64 
-  commands:
-    - go run main.go 
+    port: 8087
+    environment:
+      GO111MODULE: on 
+      GOPROXY: https://goproxy.cn,direct
+      CGO_ENABLED: 0  
+      GOOS: linux 
+      GOARCH: amd64 
+    commands:
+      - go run main.go 
+
