@@ -13,9 +13,6 @@ steps:
 
 - name: Docker build
   image: docker:dind  #选择docker:dind镜像
-  volumes:
-  - name: docker-sock
-    path: /var/run/docker.sock  #映射宿主机Docker
   commands:
   - docker -v
   - docker ps
