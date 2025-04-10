@@ -9,7 +9,7 @@ steps:
   entrypoint:
   - /bin/sh
   commands:
-  - go run main.go
+  - go build main.go
 
 - name: Docker build
   image: docker:dind  #选择docker:dind镜像
