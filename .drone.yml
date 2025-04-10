@@ -12,6 +12,5 @@ steps:
     GOOS: linux 
     GOARCH: amd64 
   settings:
-      port: 8087
-  commands:
-      - go run main.go 
+      dockfile: ./Dockerfile
+  
