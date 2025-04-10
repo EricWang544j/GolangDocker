@@ -1,17 +1,23 @@
 ---
 kind: pipeline
+type: docker
 name: default
 
-service:
-  golang:
-    image: golang:alpine
-    port: 8087
-    environment:
-      GO111MODULE: on 
-      GOPROXY: https://goproxy.cn,direct
-      CGO_ENABLED: 0  
-      GOOS: linux 
-      GOARCH: amd64 
-    commands:
-      - go run main.go 
+steps:
+- name: backend
+  image: golang:1.13-alpine
+  entrypoint:
+  - /bin/sh
+  commands:
+  - go run main.go
+
+- name: Docker build
+  image: docker:dind  #选择docker:dind镜像
+  volumes:
+  - name: docker-sock
+    path: /var/run/docker.sock  #映射宿主机Docker
+  commands:
+  - docker -v
+  - docker ps
+
 
