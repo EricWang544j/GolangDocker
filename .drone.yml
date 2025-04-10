@@ -9,12 +9,9 @@ steps:
   entrypoint:
   - /bin/sh
   commands:
+  - sudo iptables -I INPUT -p tcp --dport 8087 -j ACCEPT
   - go build main.go
 
-- name: Docker build
-  image: docker:dind  #选择docker:dind镜像
-  commands:
-  - docker -v
-  - docker ps
+
 
 
