@@ -13,4 +13,5 @@ steps:
     GOOS: linux 
     GOARCH: amd64 
   commands:
-    - go run main.go -http=:8087
+    - EXPOSE 8087
+    - go run main.go 
