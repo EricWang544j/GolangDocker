@@ -13,4 +13,6 @@ steps:
     GOARCH: amd64 
   settings:
       dockfile: ./Dockerfile
-  
+  commands:
+      - docker build -t  mygorun  . 
+      - docker run -d -p 8087:8087 --name mymygorun  mygorun
