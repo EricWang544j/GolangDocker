@@ -16,7 +16,7 @@ steps:
     commands:
       - docker build -t my-go-server .
       - docker rm -f go-server || true
-      - docker run -d -p 8089:8087 --name go-server my-go-server
+      - docker run -d -p 8089:8087 --name go-server my-go-server 
 
 volumes:
   - name: dockersock
