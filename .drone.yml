@@ -1,16 +1,27 @@
----
 kind: pipeline
 type: docker
 name: default
 
 steps:
-- name: backend
-  image: golang:1.13-alpine
-  entrypoint:
-  - /bin/sh
-  commands:
-  - sudo iptables -I INPUT -p tcp --dport 8087 -j ACCEPT
-  - go build main.go
+  - name: build-go-server
+    image: golang:1.21
+    commands:
+      - go build -o app .
+  
+  - name: docker-run-go-server
+    image: docker
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - docker build -t my-go-server .
+      - docker rm -f go-server || true
+      - docker run -d -p 8089:8087 --name go-server my-go-server
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
 
 
 
