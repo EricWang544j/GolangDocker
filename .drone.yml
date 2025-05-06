@@ -4,7 +4,7 @@ name: default
 
 steps:
   - name: build-go-server
-    image: golang:1.21
+    image: golang:1.23
     commands:
       - go build -o app .
   
